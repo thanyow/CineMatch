@@ -59,7 +59,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/thanyow/CineMatch.git](https://github.com/thanyow/CineMatch.git)
+   git clone https://github.com/thanyow/CineMatch.git
    cd CineMatch
 ````
 
@@ -67,7 +67,7 @@
 
     ```bash
     pip install -r requirements.txt
-    ```
+```
 
 3.  **Get your API Key**
 
