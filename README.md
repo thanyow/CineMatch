@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![API](https://img.shields.io/badge/API-TMDB-green)
 
-**CineMatch** is an interactive movie discovery engine that bridges the gap between static data projects and immersive streaming experiences. Built entirely in Python, it leverages the **TMDB Live API** to provide real-time trending data, smart recommendations, and watchable trailers in a Netflix-style interface.
+**CineMatch** is an interactive movie discovery engine that bridges the gap between static data projects and immersive streaming experiences. Built entirely in Python, it leverages the **TMDB Live API** to provide real-time trending data, smart recommendations, and watchable trailers in a streaming platform-style interface.
 
 🔗 **Live Demo:** [View App](https://cinema-tch.streamlit.app)
 
@@ -22,7 +22,7 @@
 
 ### 🔥 **Live Trending Dashboard**
 - Instantly fetches the **Top 10 Trending Movies** of the week from TMDB.
-- Displays results in a responsive, **clickable image grid** (Netflix-style) rather than a boring list.
+- Displays results in a responsive, **clickable image grid** rather than a boring list.
 
 ### 🔍 **Smart Search Engine**
 - Implements **Debounced Search** to prevent API rate limiting.
