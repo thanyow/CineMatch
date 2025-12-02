@@ -1,13 +1,13 @@
 # 🍿 CineMatch
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cinema-tch.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cinematch.streamlit.app)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-E50914?logo=python&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Active-abbb72)
 ![API](https://img.shields.io/badge/Data-TMDB_API-E50914)
 
 **CineMatch** is an AI-powered movie discovery engine that bridges the gap between static recommendations and an immersive streaming experience. Built entirely in Python, it leverages the **TMDB Live API** to provide real-time trending data, smart recommendations, and watchable trailers in a Streaming platform-style interface.
 
-🔗 **Live Demo:** [Launch App](https://cinema-tch.streamlit.app)
+🔗 **Live Demo:** [Launch App](https://cinematch.streamlit.app)
 
 ---
 
@@ -59,62 +59,48 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/thanyow/CineMatch.git
+   git clone [https://github.com/thanyow/CineMatch.git](https://github.com/thanyow/CineMatch.git)
    cd CineMatch
-````
+Install dependencies
 
-2.  **Install dependencies**
+Bash
 
-    ```bash
-    pip install -r requirements.txt
-```
+pip install -r requirements.txt
+Get your API Key
 
-3.  **Get your API Key**
+Sign up at The Movie Database (TMDB).
 
-      - Sign up at [The Movie Database (TMDB)](https://www.themoviedb.org/).
-      - Go to Settings \> API to generate your key.
+Go to Settings > API to generate your key.
 
-4.  **Configure Secrets**
-    Create a file named `.streamlit/secrets.toml` in the root directory:
+Configure Secrets Create a file named .streamlit/secrets.toml in the root directory:
 
-    ```toml
-    tmdb_key = "YOUR_API_KEY_HERE"
-    ```
+Ini, TOML
 
-5.  **Run the App**
+tmdb_key = "YOUR_API_KEY_HERE"
+Run the App
 
-    ```bash
-    streamlit run src/recommender.py
-    ```
+Bash
 
------
+streamlit run src/recommender.py
+📂 Project Structure
+Plaintext
 
-## 📂 Project Structure
-
-```text
 CineMatch/
 ├── .streamlit/
 │   └── secrets.toml      # API Keys (GitIgnored)
 ├── assets/               # Screenshots for Readme
-│   └── dashboard.png     # App Screenshot
+│   ├── dashboard.png     # App Screenshot
 │   └── details.png       # App Screenshot
 ├── src/
 │   └── recommender.py    # Main Application Logic
 ├── .gitignore            # Security rules
 ├── README.md             # Documentation
 └── requirements.txt      # Dependencies
-```
+🤝 Credits
+Data provided by The Movie Database (TMDB).
 
------
+Built with Streamlit.
 
-## 🤝 Credits
+Developed by thanyow.
 
-  * Data provided by **[The Movie Database (TMDB)](https://www.themoviedb.org/)**.
-  * Built with **[Streamlit](https://streamlit.io/)**.
-  * Developed by **[thanyow](https://github.com/thanyow)**.
-
------
-
-\<p align="center"\>
-\<i\>This product uses the TMDB API but is not endorsed or certified by TMDB.\</i\>
-\</p\>
+<p align="center"> <i>This product uses the TMDB API but is not endorsed or certified by TMDB.</i> </p>
