@@ -1,3 +1,5 @@
+
+````markdown
 # 🍿 CineMatch
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cinematch.streamlit.app)
@@ -61,30 +63,37 @@
    ```bash
    git clone [https://github.com/thanyow/CineMatch.git](https://github.com/thanyow/CineMatch.git)
    cd CineMatch
-Install dependencies
+````
 
-Bash
+2.  **Install dependencies**
 
-pip install -r requirements.txt
-Get your API Key
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Sign up at The Movie Database (TMDB).
+3.  **Get your API Key**
 
-Go to Settings > API to generate your key.
+      - Sign up at [The Movie Database (TMDB)](https://www.themoviedb.org/).
+      - Go to Settings \> API to generate your key.
 
-Configure Secrets Create a file named .streamlit/secrets.toml in the root directory:
+4.  **Configure Secrets**
+    Create a file named `.streamlit/secrets.toml` in the root directory:
 
-Ini, TOML
+    ```toml
+    tmdb_key = "YOUR_API_KEY_HERE"
+    ```
 
-tmdb_key = "YOUR_API_KEY_HERE"
-Run the App
+5.  **Run the App**
 
-Bash
+    ```bash
+    streamlit run src/recommender.py
+    ```
 
-streamlit run src/recommender.py
-📂 Project Structure
-Plaintext
+-----
 
+## 📂 Project Structure
+
+```text
 CineMatch/
 ├── .streamlit/
 │   └── secrets.toml      # API Keys (GitIgnored)
@@ -96,11 +105,21 @@ CineMatch/
 ├── .gitignore            # Security rules
 ├── README.md             # Documentation
 └── requirements.txt      # Dependencies
-🤝 Credits
-Data provided by The Movie Database (TMDB).
+```
 
-Built with Streamlit.
+-----
 
-Developed by thanyow.
+## 🤝 Credits
 
-<p align="center"> <i>This product uses the TMDB API but is not endorsed or certified by TMDB.</i> </p>
+  * Data provided by **[The Movie Database (TMDB)](https://www.themoviedb.org/)**.
+  * Built with **[Streamlit](https://streamlit.io/)**.
+  * Developed by **[thanyow](https://github.com/thanyow)**.
+
+-----
+
+\<p align="center"\>
+\<i\>This product uses the TMDB API but is not endorsed or certified by TMDB.\</i\>
+\</p\>
+
+```
+```
