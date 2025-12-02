@@ -12,19 +12,33 @@ if 'current_movie_id' not in st.session_state:
 if 'search_key_version' not in st.session_state:
     st.session_state.search_key_version = 0
 
+# --- CONSTANTS: GENRE MAP ---
+GENRE_MAP = {
+    "All Genres": None,
+    "Action": 28,
+    "Adventure": 12,
+    "Animation": 16,
+    "Comedy": 35,
+    "Crime": 80,
+    "Drama": 18,
+    "Fantasy": 14,
+    "Horror": 27,
+    "Mystery": 9648,
+    "Romance": 10749,
+    "Sci-Fi": 878,
+    "Thriller": 53
+}
+
 # --- CUSTOM CSS ---
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap');
     
-    /* 1. TYPOGRAPHY & LINK STYLING */
     h1 { 
         font-family: 'Bebas Neue', sans-serif; 
         font-size: 4rem !important; 
         margin-bottom: 0px; 
     }
-    
-    /* Force underline away */
     h1 a, h1 a:visited, h1 a:hover, h1 a:active { 
         text-decoration: none !important; 
         color: #E50914 !important; 
@@ -34,15 +48,13 @@ st.markdown("""
     
     h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem !important; }
     
-    /* 2. CARD STYLING */
     .movie-title { font-weight: bold; font-size: 1.0rem; margin-top: 5px; margin-bottom: 0px; line-height: 1.2;}
     .movie-year { color: #aaa; font-size: 0.85rem; margin-top: 0px; margin-bottom: 10px; }
     
-    /* 3. BUTTONS */
     .stButton>button { background-color: #333; color: white; border: 1px solid #555; }
     .stButton>button:hover { border-color: #E50914; color: #E50914; }
 
-    /* 4. GENRE TAGS (NEW) */
+    /* GENRE TAGS */
     .genre-tag {
         display: inline-block;
         background-color: #333;
@@ -55,7 +67,6 @@ st.markdown("""
         border: 1px solid #555;
     }
     
-    /* 5. FOOTER STYLING */
     .footer {
         text-align: center;
         color: #666;
@@ -101,6 +112,13 @@ def get_trending_movies():
     try: return requests.get(url).json().get('results', [])
     except: return []
 
+# --- NEW: GET MOVIES BY GENRE ---
+def get_movies_by_genre(genre_id):
+    api_key = get_api_key()
+    url = f"https://api.themoviedb.org/3/discover/movie?api_key={api_key}&with_genres={genre_id}&sort_by=popularity.desc"
+    try: return requests.get(url).json().get('results', [])
+    except: return []
+
 # --- NAVIGATION HELPER ---
 def go_to_movie(movie_id):
     st.session_state.current_movie_id = movie_id
@@ -119,12 +137,27 @@ if user_selection:
     go_to_movie(user_selection)
 
 if st.session_state.current_movie_id is None:
-    # --- TRENDING DASHBOARD ---
-    st.subheader("🔥 Trending This Week")
-    trending = get_trending_movies()[:10]
-    cols = st.columns(5)
+    # --- DASHBOARD (Trending or Filtered) ---
     
-    for i, movie in enumerate(trending):
+    # 1. Filter UI
+    col_header, col_filter = st.columns([3, 1])
+    with col_filter:
+        selected_genre_name = st.selectbox("Filter by Genre", list(GENRE_MAP.keys()))
+    
+    # 2. Logic to switch data source
+    if selected_genre_name == "All Genres":
+        movie_list = get_trending_movies()[:10]
+        with col_header:
+            st.subheader("🔥 Trending This Week")
+    else:
+        genre_id = GENRE_MAP[selected_genre_name]
+        movie_list = get_movies_by_genre(genre_id)[:10]
+        with col_header:
+            st.subheader(f"🍿 Top {selected_genre_name} Movies")
+
+    # 3. Display Grid
+    cols = st.columns(5)
+    for i, movie in enumerate(movie_list):
         col_index = i % 5
         with cols[col_index]:
             poster = f"https://image.tmdb.org/t/p/w500{movie['poster_path']}" if movie.get('poster_path') else "https://via.placeholder.com/500x750"
@@ -134,7 +167,7 @@ if st.session_state.current_movie_id is None:
                 titles=[movie['title']],
                 div_style={"display": "flex", "justify-content": "center", "width": "100%"},
                 img_style={"cursor": "pointer", "border-radius": "10px", "width": "100%"},
-                key=f"trend_{movie['id']}"
+                key=f"home_{movie['id']}" # Changed key prefix to avoid conflicts
             )
             
             year = movie.get('release_date', '')[:4]
@@ -147,7 +180,7 @@ else:
     # --- MOVIE DETAILS PAGE ---
     data = get_details(st.session_state.current_movie_id)
     
-    if st.button("⬅ Back to Trending"):
+    if st.button("⬅ Back to Dashboard"):
         st.session_state.current_movie_id = None
         st.session_state.search_key_version += 1
         st.rerun()
@@ -167,16 +200,12 @@ else:
     
     with c2:
         st.markdown(f"## {data['title']}")
-        
-        # Display Year, Runtime, Status
         st.caption(f"{data.get('release_date', '')[:4]} • {data.get('runtime', 'N/A')} min • {data.get('status', '')}")
         
-        # --- DISPLAY GENRES ---
+        # Display Genres
         if 'genres' in data:
-            # Create a string of HTML spans for each genre
             genre_html = "".join([f"<span class='genre-tag'>{g['name']}</span>" for g in data['genres']])
             st.markdown(f"<div>{genre_html}</div>", unsafe_allow_html=True)
-        # ---------------------------
 
         st.write(data.get('overview', ''))
         st.markdown(f"### ⭐ {data.get('vote_average', 0):.1f}/10")
