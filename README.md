@@ -12,7 +12,7 @@
 
 ## 📸 Screenshots
 
-| **Trending Dashboard** | **Movie Details & Trailers** |
+| **Trending Dashboard** | **Movie Details & Trailer** |
 |:---:|:---:|
 | <img src="assets/dashboard.png" width="400"> | <img src="assets/details.png" width="400"> |
 
