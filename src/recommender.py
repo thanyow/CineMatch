@@ -41,8 +41,21 @@ st.markdown("""
     /* 3. BUTTONS */
     .stButton>button { background-color: #333; color: white; border: 1px solid #555; }
     .stButton>button:hover { border-color: #E50914; color: #E50914; }
+
+    /* 4. GENRE TAGS (NEW) */
+    .genre-tag {
+        display: inline-block;
+        background-color: #333;
+        color: #ddd;
+        padding: 2px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #555;
+    }
     
-    /* 4. FOOTER STYLING */
+    /* 5. FOOTER STYLING */
     .footer {
         text-align: center;
         color: #666;
@@ -154,7 +167,17 @@ else:
     
     with c2:
         st.markdown(f"## {data['title']}")
+        
+        # Display Year, Runtime, Status
         st.caption(f"{data.get('release_date', '')[:4]} • {data.get('runtime', 'N/A')} min • {data.get('status', '')}")
+        
+        # --- DISPLAY GENRES ---
+        if 'genres' in data:
+            # Create a string of HTML spans for each genre
+            genre_html = "".join([f"<span class='genre-tag'>{g['name']}</span>" for g in data['genres']])
+            st.markdown(f"<div>{genre_html}</div>", unsafe_allow_html=True)
+        # ---------------------------
+
         st.write(data.get('overview', ''))
         st.markdown(f"### ⭐ {data.get('vote_average', 0):.1f}/10")
         
