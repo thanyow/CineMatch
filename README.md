@@ -1,30 +1,22 @@
-Since you asked for **CineMatch** (the Movie version), here is the updated `README.md` that reflects all the "Senior Dev" features we added earlier (Embedded Trailers, Clickable Grid, and Live Search).
-
-If you actually meant the **K-Drama** version (K-Binge), just let me know and I will swap the text\!
-
-### **Copy this into your `README.md` file:**
-
-````markdown
 # 🍿 CineMatch
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cinematch.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cinema-tch.streamlit.app)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-E50914?logo=python&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Active-abbb72)
 ![API](https://img.shields.io/badge/Data-TMDB_API-E50914)
 
 **CineMatch** is an AI-powered movie discovery engine that bridges the gap between static recommendations and an immersive streaming experience. Built entirely in Python, it leverages the **TMDB Live API** to provide real-time trending data, smart recommendations, and watchable trailers in a Streaming platform-style interface.
 
-🔗 **Live Demo:** [Launch App](https://cinematch.streamlit.app) *(Replace with your deployed link)*
+🔗 **Live Demo:** [Launch App](https://cinema-tch.streamlit.app)
 
 ---
 
 ## 📸 Preview
 
-<p align="center">
-  <img src="assets/dashboard.png" width="700" alt="CineMatch Dashboard">
-  <br>
-  <i>(A curated dashboard featuring the top trending movies of the week)</i>
-</p>
+| **Trending Dashboard** | **Movie Details & Trailers** |
+|:---:|:---:|
+| <img src="assets/dashboard.png" width="400" alt="CineMatch Dashboard"> | <img src="assets/details.png" width="400" alt="Movie Details Page"> |
+| *Curated dashboard with live trending movies* | *Immersive details page with embedded trailers* |
 
 ---
 
@@ -67,7 +59,7 @@ If you actually meant the **K-Drama** version (K-Binge), just let me know and I 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/thanyow/CineMatch.git
+   git clone [https://github.com/thanyow/CineMatch.git](https://github.com/thanyow/CineMatch.git)
    cd CineMatch
 ````
 
@@ -126,6 +118,3 @@ CineMatch/
 \<p align="center"\>
 \<i\>This product uses the TMDB API but is not endorsed or certified by TMDB.\</i\>
 \</p\>
-
-```
-```
