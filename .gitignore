@@ -1,0 +1,14 @@
+# Ignore Mac/Windows system files
+.DS_Store
+Thumbs.db
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore Virtual Environment
+venv/
+env/
+
+# IGNORE SECRETS
+.streamlit/secrets.toml
