@@ -1,12 +1,12 @@
 # 🍿 CineMatch
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cinematch.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cinema-tch.streamlit.app)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![API](https://img.shields.io/badge/API-TMDB-green)
 
 **CineMatch** is an interactive movie discovery engine that bridges the gap between static data projects and immersive streaming experiences. Built entirely in Python, it leverages the **TMDB Live API** to provide real-time trending data, smart recommendations, and watchable trailers in a Netflix-style interface.
 
-🔗 **Live Demo:** [View App](https://cinematch.streamlit.app) *(Replace with your actual link)*
+🔗 **Live Demo:** [View App](https://cinema-tch.streamlit.app)
 
 ---
 
